@@ -3,7 +3,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.7%2B-blue?logo=python)
 ![Pygame Version](https://img.shields.io/badge/pygame-2.0%2B-green?logo=python)
 ![License](https://img.shields.io/badge/license-MIT-purple)
-[![Download Executable](https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file)](https://github.com/pixelKaushal/submerged/releases/latest)
+[![Download Executable](https://img.shields.io/badge/Download-Windows%20.zip-brightgreen?style=for-the-badge&logo=windows)](https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file)
 
 An underwater survival adventure game built with Pygame. Control a fish navigating dangerous waters, collecting food, and avoiding deadly predators.
 
@@ -48,8 +48,13 @@ An underwater survival adventure game built with Pygame. Control a fish navigati
 
 ## Installation
 
-### Running from Source
+### Option 1: Direct Executable Download (No Python Required)
+1. Download **[Submerged-v1.0.zip](https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file)** from MediaFire.
+2. Extract the `.zip` archive.
+3. Open the folder and run `main.exe`.
+
+### Option 2: Running from Source
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/submerged.git](https://github.com/yourusername/submerged.git)
+   git clone [https://github.com/pixelKaushal/submerged.git](https://github.com/pixelKaushal/submerged.git)
    cd submerged
