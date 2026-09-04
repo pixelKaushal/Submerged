@@ -3,7 +3,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.7%2B-blue?logo=python)
 ![Pygame Version](https://img.shields.io/badge/pygame-2.0%2B-green?logo=python)
 ![License](https://img.shields.io/badge/license-MIT-purple)
-[![Download Executable](https://img.shields.io/badge/Download-Windows%20.exe-brightgreen?style=for-the-badge&logo=windows)](https://github.com/yourusername/submerged/releases/latest)
+[![Download Executable](https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file)](https://github.com/pixelKaushal/submerged/releases/latest)
 
 An underwater survival adventure game built with Pygame. Control a fish navigating dangerous waters, collecting food, and avoiding deadly predators.
 
