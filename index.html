@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBMERGED - Survive the Depths</title>
+    <link rel="icon" href="fish.png" type="image/x-icon">
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0b1a2a;
+            color: #e8edf2;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #5fc3e4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #7dd4f0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: sticky;
+            top: 0;
+            background: rgba(11, 26, 42, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #5fc3e4;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #9aaec2;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #5fc3e4;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            color: #9aaec2;
+            margin-bottom: 8px;
+        }
+
+        .hero .tagline {
+            font-size: 16px;
+            color: #6a8fa8;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #5fc3e4;
+            color: #0b1a2a;
+        }
+
+        .btn-primary:hover {
+            background: #7dd4f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e8edf2;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .btn-download {
+            background: #f0b34b;
+            color: #0b1a2a;
+        }
+
+        .btn-download:hover {
+            background: #f5c56a;
+            transform: translateY(-2px);
+        }
+
+        /* ===== SECTION ===== */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: #9aaec2;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 28px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.25s;
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(95, 195, 228, 0.3);
+        }
+
+        .feature h3 {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .feature p {
+            color: #9aaec2;
+            font-size: 14px;
+        }
+
+        /* ===== DOWNLOAD ===== */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .download-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 32px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            transition: all 0.25s;
+        }
+
+        .download-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(95, 195, 228, 0.3);
+        }
+
+        .download-item h3 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .download-item .platform {
+            color: #6a8fa8;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .download-item .size {
+            color: #6a8fa8;
+            font-size: 12px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .btn-small {
+            padding: 10px 28px;
+            font-size: 13px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: #5fc3e4;
+            color: #0b1a2a;
+        }
+
+        .btn-small:hover {
+            background: #7dd4f0;
+            transform: translateY(-2px);
+        }
+
+        /* ===== REQUIREMENTS ===== */
+        .req-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .req-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 28px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .req-box h3 {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .req-box ul {
+            list-style: none;
+        }
+
+        .req-box ul li {
+            color: #9aaec2;
+            font-size: 14px;
+            padding: 4px 0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            color: #6a8fa8;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #6a8fa8;
+            font-size: 13px;
+            margin-left: 20px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #e8edf2;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero .subtitle {
+                font-size: 17px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .req-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            footer a {
+                margin: 0 10px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <div class="logo">SUB<span>MERGED</span></div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#download">Download</a>
+                <a href="#requirements">Requirements</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1>SUB<span>MERGED</span></h1>
+            <p class="subtitle">Survive the Depths</p>
+            <p class="tagline">A brave fish. Deadly predators. One goal: survive.</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-download">Download Now</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <p class="section-desc">What makes SUBMERGED a unique underwater survival experience</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Three Danger Zones</h3>
+                    <p>Sky, water, and ground each have unique predators hunting you</p>
+                </div>
+                <div class="feature">
+                    <h3>Collect & Score</h3>
+                    <p>Gather algae and meat for points while avoiding becoming prey</p>
+                </div>
+                <div class="feature">
+                    <h3>Day & Night Cycle</h3>
+                    <p>Dynamic lighting changes every 10 seconds with sun, moon, and stars</p>
+                </div>
+                <div class="feature">
+                    <h3>Multiple Enemies</h3>
+                    <p>Sharks patrol the water, crabs lurk on ground, king fishers hunt from above</p>
+                </div>
+                <div class="feature">
+                    <h3>Animated World</h3>
+                    <p>Moving clouds, rising bubbles, swaying grass, and flowing water</p>
+                </div>
+                <div class="feature">
+                    <h3>Immersive Audio</h3>
+                    <p>Atmospheric music and sound effects for every action and encounter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DOWNLOAD ===== -->
+    <section id="download">
+        <div class="container">
+            <h2 class="section-title">Download</h2>
+            <p class="section-desc">Available for all major platforms</p>
+            <div class="download-grid">
+                <div class="download-item">
+                    <h3>Windows</h3>
+                    <p class="platform">Windows 7, 8, 10, 11</p>
+                    <a href="https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file" class="btn-small">Download .exe</a>
+                    <span class="size">~43 MB</span>
+                </div>
+                <div class="download-item">
+                    <h3>macOS</h3>
+                    <p class="platform">macOS 10.12 or later</p>
+                    <a href="https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file" class="btn-small" target="_blank">Download .app</a>
+                    <span class="size">~43 MB</span>
+                </div>
+                <div class="download-item">
+                    <h3>Linux</h3>
+                    <p class="platform">Ubuntu, Debian, Fedora</p>
+                    <a href="https://www.mediafire.com/file/f8ujtjovnnd3jyv/Submerged-v1.0.zip/file" class="btn-small" target="_blank">Download .AppImage</a>
+                    <span class="size">~43 MB</span>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:30px;color:#6a8fa8;font-size:13px;">
+                Source code available on <a href="https://github.com/pixelKaushal/Submerged" style="color:#5fc3e4;" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== REQUIREMENTS ===== -->
+    <section id="requirements">
+        <div class="container">
+            <h2 class="section-title">System Requirements</h2>
+            <p class="section-desc">Minimum specifications to run SUBMERGED</p>
+            <div class="req-grid">
+                <div class="req-box">
+                    <h3>Minimum</h3>
+                    <ul>
+                        <li>Windows 7 / macOS 10.12 / Linux</li>
+                        <li>1.0 GHz processor</li>
+                        <li>512 MB RAM</li>
+                        <li>128 MB graphics</li>
+                        <li>100 MB storage</li>
+                    </ul>
+                </div>
+                <div class="req-box">
+                    <h3>Recommended</h3>
+                    <ul>
+                        <li>Windows 10 / macOS 11 / Linux</li>
+                        <li>2.0 GHz processor</li>
+                        <li>1 GB RAM</li>
+                        <li>256 MB graphics</li>
+                        <li>200 MB storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SUBMERGED. All rights reserved.</p>
+            <div>
+                <a href="https://github.com/pixelKaushal/Submerged" target="_blank">GitHub</a>
+                
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SMOOTH SCROLL ===== -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
